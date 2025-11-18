@@ -1,8 +1,88 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Git page site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Interactive Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 8px #3333;
+            margin-bottom: 0.5em;
+            animation: bounce 1.5s infinite alternate;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        .fun-btn {
+            background: #fff;
+            color: #66a6ff;
+            border: none;
+            padding: 1em 2em;
+            font-size: 1.2em;
+            border-radius: 30px;
+            box-shadow: 0 4px 16px #3332;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            margin-top: 1em;
+        }
+        .fun-btn:hover {
+            background: #66a6ff;
+            color: #fff;
+            transform: scale(1.1);
+        }
+        .emoji {
+            font-size: 2.5em;
+            margin: 1em 0;
+            transition: transform 0.3s;
+        }
+        .emoji.animate {
+            transform: rotate(360deg) scale(1.5);
+        }
+        .card {
+            background: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            padding: 2em;
+            box-shadow: 0 8px 32px #3332;
+            text-align: center;
+            margin-top: 2em;
+        }
+    </style>
 </head>
 <body>
-    <h1>Git page test</h1>
+    <h1>🎉 面白いウェブサイトへようこそ！ 🎉</h1>
+    <div class="emoji" id="emoji">😎</div>
+    <button class="fun-btn" onclick="changeEmoji()">絵文字を変える</button>
+    <div class="card" id="card">
+        <p>上のボタンをクリックして、どんな面白い絵文字が出るか見てみましょう！</p>
+    </div>
+    <script>
+        const emojis = ['😎','😂','🤩','🥳','😜','🦄','👾','🤖','🐱‍👤','🌈','🔥','💡','🎲','🍕','🚀'];
+        function changeEmoji() {
+            const emojiDiv = document.getElementById('emoji');
+            const card = document.getElementById('card');
+            let newEmoji;
+            do {
+                newEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            } while (emojiDiv.textContent === newEmoji);
+            emojiDiv.textContent = newEmoji;
+            emojiDiv.classList.add('animate');
+            setTimeout(() => emojiDiv.classList.remove('animate'), 500);
+            card.innerHTML = `<p>あなたが引いた絵文字は <span style='font-size:2em;'>${newEmoji}</span> です！</p>`;
+        }
+    </script>
 </body>
 </html>
