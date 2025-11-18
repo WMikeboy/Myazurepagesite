@@ -1,2 +1,2 @@
-# Mygitpagesite
-gitpagesite
+# Myazurepagesite
+azurepagesite 
